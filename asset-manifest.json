@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/oltree/React-project-TMS.git/static/css/main.71f7ecdc.css",
+    "main.js": "/oltree/React-project-TMS.git/static/js/main.f527861d.js",
+    "index.html": "/oltree/React-project-TMS.git/index.html",
+    "main.71f7ecdc.css.map": "/oltree/React-project-TMS.git/static/css/main.71f7ecdc.css.map",
+    "main.f527861d.js.map": "/oltree/React-project-TMS.git/static/js/main.f527861d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.71f7ecdc.css",
+    "static/js/main.f527861d.js"
+  ]
+}
