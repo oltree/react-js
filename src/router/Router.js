@@ -9,6 +9,7 @@ import ListsContainer from "../pages/Lists/container/ListsContainer";
 import CountersManagerContainer from "../pages/CountersManager/container/CountersManagerContainer";
 import FormsContainer from "../pages/Forms/container/FormsContainer";
 import ReduxCountersContainer from "../pages/ReduxCounters/container/ReduxCountersContainer";
+import TodoListContainer from "../pages/TodoList/container/TodoListContainer";
 
 const Router = () => {
   return (
@@ -32,6 +33,7 @@ const Router = () => {
         path={ROUTE_NAMES.REDUX_COUNTERS}
         element={<ReduxCountersContainer />}
       />
+      <Route path={ROUTE_NAMES.TODO_LIST} element={<TodoListContainer />} />
     </Routes>
   );
 };

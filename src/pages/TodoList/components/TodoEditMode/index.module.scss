@@ -1,0 +1,34 @@
+.wrapper {
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border: 1px solid black;
+	border-radius: 15px;
+	background: rgb(187, 176, 176);
+}
+
+.input {
+	width: 81.5%;
+	padding: 4px 15px;
+	font-size: 16px;
+	border-radius: 5px;
+	background: rgb(228, 214, 214);
+}
+
+.buttonsContainer {
+	display: flex;
+	gap: 10px;
+}
+
+.button {
+	width: 60px;
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 5px;
+	background: rgb(216, 127, 127);
+
+	&:hover {
+		background: rgb(161, 95, 95);
+	}
+}
