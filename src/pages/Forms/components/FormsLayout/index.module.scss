@@ -1,0 +1,38 @@
+.wrapper {
+	padding: 20px;
+	background: rgb(78, 121, 38);
+}
+
+.title {
+	margin-bottom: 20px;
+}
+
+.form {
+	margin-bottom: 30px;
+}
+
+.text {
+	margin-bottom: 5px;
+}
+
+.input {
+	padding: 5px;
+	margin-right: 5px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.button {
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 5px;
+	background: rgb(180, 70, 70);
+
+	&:hover {
+		background: rgb(173, 48, 48);
+	}
+}
+
+.subtitle {
+	margin-bottom: 20px;
+}

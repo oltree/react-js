@@ -1,0 +1,22 @@
+.menu {
+	height: 60px;
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	padding: 0 0 0 30px;
+	border-bottom: 1px solid black;
+	background: rgb(172, 166, 166);
+}
+
+.menuItem {
+	display: inline-block;
+	padding: 10px 15px;
+	border-radius: 10px;
+	color: black;
+	text-decoration: none;
+	background: rgb(84, 131, 202);
+
+	&:hover {
+		background: rgb(58, 91, 139);
+	}
+}
