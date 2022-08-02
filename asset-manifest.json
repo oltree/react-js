@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/oltree/React-project-TMS.git/static/css/main.ced8a24e.css",
-    "main.js": "/oltree/React-project-TMS.git/static/js/main.0eebf776.js",
-    "index.html": "/oltree/React-project-TMS.git/index.html",
-    "main.ced8a24e.css.map": "/oltree/React-project-TMS.git/static/css/main.ced8a24e.css.map",
-    "main.0eebf776.js.map": "/oltree/React-project-TMS.git/static/js/main.0eebf776.js.map"
+    "main.css": "/React-project-TMS/static/css/main.ced8a24e.css",
+    "main.js": "/React-project-TMS/static/js/main.0eebf776.js",
+    "index.html": "/React-project-TMS/index.html",
+    "main.ced8a24e.css.map": "/React-project-TMS/static/css/main.ced8a24e.css.map",
+    "main.0eebf776.js.map": "/React-project-TMS/static/js/main.0eebf776.js.map"
   },
   "entrypoints": [
     "static/css/main.ced8a24e.css",
