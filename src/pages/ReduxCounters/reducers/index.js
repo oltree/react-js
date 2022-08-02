@@ -5,24 +5,27 @@ import * as actions from "../actions";
 
 const defaultState = {
   counters: [],
-  //...другие поля
+  //...others fields
 };
 
 export const countersManagerReducer = handleActions(
   {
     [actions.CREATE_COUNTER]: (state) => {
-      const countersCopy = [...state.counters]; //state - this is object defaultState
-
       const newCounter = {
         id: uuid(),
         countValue: 0,
       };
 
-      countersCopy.push(newCounter);
+      const updatedCounters = state.counters.map(({ id, countValue }) => {
+        return {
+          id,
+          countValue: countValue % 2 === 0 ? countValue + 1 : countValue,
+        };
+      });
 
       return {
-        ...state, //Это мы разворачиваем все поля defaultState
-        counters: countersCopy,
+        ...state, //all fields defaultState
+        counters: [...updatedCounters, newCounter],
       };
     },
     [actions.REMOVE_ALL_COUNTERS]: () => defaultState,
@@ -73,7 +76,12 @@ export const countersManagerReducer = handleActions(
 
       return {
         ...state,
-        counters: countersCopy,
+        counters: countersCopy.map(({ id, countValue }) => {
+          return {
+            id,
+            countValue: countValue % 2 !== 0 ? countValue - 1 : countValue,
+          };
+        }),
       };
     },
   },
