@@ -7,7 +7,6 @@ const Home = () => {
   return (
     <div>
       <h1>Home</h1>
-      <h2>Counters Amount: {counters.length}</h2>
     </div>
   );
 };
