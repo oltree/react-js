@@ -77,6 +77,7 @@ export const todosReducer = handleActions(
         todos: todosCopy,
       };
     },
+    [actions.REMOVE_ALL_TODO]: () => defaultState,
   },
   defaultState
 );

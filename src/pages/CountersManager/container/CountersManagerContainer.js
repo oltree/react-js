@@ -24,9 +24,7 @@ const CountersManagerContainer = () => {
     });
   };
 
-  const handleResetCounters = useCallback(() => {
-    setCounters([]);
-  }, []); //НУЖЕН ЛИ useCallback?????
+  const handleResetCounters = () => setCounters([]);
 
   const handleIncrement = useCallback((id) => {
     setCounters((state) => {

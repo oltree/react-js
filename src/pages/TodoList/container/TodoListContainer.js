@@ -7,6 +7,7 @@ import {
   EDIT_TODO,
   SAVE_TODO,
   COMPLETE_TODO,
+  REMOVE_ALL_TODO,
 } from "../actions";
 
 import TodoListLayout from "../components/TodoListLayout";
@@ -66,6 +67,10 @@ const TodoListContainer = () => {
     [dispatch]
   );
 
+  const handleTodoRemoveAll = () => {
+    dispatch(REMOVE_ALL_TODO());
+  };
+
   return (
     <TodoListLayout
       todos={todos}
@@ -76,6 +81,7 @@ const TodoListContainer = () => {
       onTodoEditAndCancel={handleTodoEditAndCancel}
       onTodoEditSave={handleTodoEditSave}
       onTodoComlete={handleTodoComlete}
+      onTodoRemoveAll={handleTodoRemoveAll}
     />
   );
 };

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import TodoEditMode from "../TodoEditMode";
 import TodoReadMode from "../TodoReadMode";
 
@@ -12,6 +14,7 @@ const TodoListLayout = ({
   onTodoEditAndCancel,
   onTodoEditSave,
   onTodoComlete,
+  onTodoRemoveAll,
 }) => {
   return (
     <div className={styles.wrapper}>
@@ -24,6 +27,7 @@ const TodoListLayout = ({
           value={formData.todoText}
           onChange={onFormChange}
           type="text"
+          placeholder=""
         />
 
         <button className={styles.button} type="submit">
@@ -31,7 +35,10 @@ const TodoListLayout = ({
         </button>
       </form>
 
-      <ol className={todos.length !== 0 ? styles.listContainer : ""}>
+      <ol className={todos.length > 0 ? styles.listContainer : ""}>
+        {todos.length > 0 && (
+          <div onClick={onTodoRemoveAll} className={styles.close} />
+        )}
         {todos.map((todo, index) =>
           todo.isEditMode ? (
             <TodoEditMode
@@ -57,6 +64,17 @@ const TodoListLayout = ({
       </ol>
     </div>
   );
+};
+
+TodoListLayout.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      text: PropTypes.string,
+      isCompleted: PropTypes.bool,
+      isEditMode: PropTypes.bool,
+    })
+  ),
 };
 
 export default TodoListLayout;
