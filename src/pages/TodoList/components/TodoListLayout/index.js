@@ -27,7 +27,7 @@ const TodoListLayout = ({
           value={formData.todoText}
           onChange={onFormChange}
           type="text"
-          placeholder=""
+          placeholder="Enter task text!"
         />
 
         <button className={styles.button} type="submit">
