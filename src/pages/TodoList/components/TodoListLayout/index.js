@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 
+import TodoCreationForm from "../TodoCreationForm";
 import TodoEditMode from "../TodoEditMode";
 import TodoReadMode from "../TodoReadMode";
 
@@ -20,24 +21,22 @@ const TodoListLayout = ({
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Todo List Manager</h1>
 
-      <form className={styles.form} onSubmit={onTodoCreate}>
-        <input
-          className={styles.input}
-          name="todoText"
-          value={formData.todoText}
-          onChange={onFormChange}
-          type="text"
-          placeholder="Enter task text!"
-        />
+      <TodoCreationForm
+        formData={formData}
+        onFormChange={onFormChange}
+        onTodoCreate={onTodoCreate}
+      />
 
-        <button className={styles.button} type="submit">
-          Create Task!
-        </button>
-      </form>
-
-      <ol className={todos.length > 0 ? styles.listContainer : ""}>
+      <ol className={styles.listContainer}>
         {todos.length > 0 && (
-          <div onClick={onTodoRemoveAll} className={styles.close} />
+          <div className={styles.searchContainer}>
+            <input
+              className={styles.searchInput}
+              type="search"
+              placeholder="Search..."
+            />
+            <div onClick={onTodoRemoveAll} className={styles.close} />
+          </div>
         )}
         {todos.map((todo, index) =>
           todo.isEditMode ? (
