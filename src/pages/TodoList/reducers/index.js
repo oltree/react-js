@@ -78,6 +78,16 @@ export const todosReducer = handleActions(
       };
     },
     [actions.REMOVE_ALL_TODO]: () => defaultState,
+    [actions.SORT_TODO]: (state) => {
+      const todosCopy = [...state.todos];
+
+      const sortTodo = todosCopy.sort((a, b) => (a.text > b.text ? 1 : -1));
+
+      return {
+        ...state,
+        todos: sortTodo,
+      };
+    },
   },
   defaultState
 );

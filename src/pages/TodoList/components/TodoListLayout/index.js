@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
 import TodoCreationForm from "../TodoCreationForm";
@@ -16,7 +17,22 @@ const TodoListLayout = ({
   onTodoEditSave,
   onTodoComlete,
   onTodoRemoveAll,
+  onTodoSort,
 }) => {
+  const [inputSearch, setInputSearch] = useState("");
+
+  const handleInputSearchChange = (event) => {
+    setInputSearch(event.target.value);
+  };
+
+  const filteredTodos = useMemo(() => {
+    return todos.filter((todo) => {
+      const lowerCaseText = todo.text.toLowerCase();
+
+      return lowerCaseText.includes(inputSearch.toLowerCase());
+    });
+  }, [inputSearch, todos]);
+
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Todo List Manager</h1>
@@ -27,18 +43,23 @@ const TodoListLayout = ({
         onTodoCreate={onTodoCreate}
       />
 
-      <ol className={styles.listContainer}>
+      <ol className={todos.length > 0 ? styles.listContainer : ""}>
         {todos.length > 0 && (
           <div className={styles.searchContainer}>
             <input
               className={styles.searchInput}
+              value={inputSearch}
               type="search"
               placeholder="Search..."
+              onChange={handleInputSearchChange}
             />
+            <button className={styles.searchButton} onClick={onTodoSort}>
+              sort
+            </button>
             <div onClick={onTodoRemoveAll} className={styles.close} />
           </div>
         )}
-        {todos.map((todo, index) =>
+        {filteredTodos.map((todo, index) =>
           todo.isEditMode ? (
             <TodoEditMode
               id={todo.id}
