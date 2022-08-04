@@ -3,6 +3,7 @@ import React, { PureComponent } from "react";
 import Counter from "../../../components/Counter";
 
 class ClassCounterContainer extends PureComponent {
+  //в PuereComponent сразу реализован shouldComponentUpdate
   constructor() {
     super();
 
