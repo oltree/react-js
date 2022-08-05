@@ -1,5 +1,7 @@
+import { useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
+import TodoCreationForm from "../TodoCreationForm";
 import TodoEditMode from "../TodoEditMode";
 import TodoReadMode from "../TodoReadMode";
 
@@ -7,6 +9,7 @@ import styles from "./index.module.scss";
 
 const TodoListLayout = ({
   todos,
+  isSort,
   formData,
   onFormChange,
   onTodoCreate,
@@ -15,31 +18,55 @@ const TodoListLayout = ({
   onTodoEditSave,
   onTodoComlete,
   onTodoRemoveAll,
+  onTodoSort,
+  onTodoSortReverse,
 }) => {
+  const [inputSearch, setInputSearch] = useState("");
+
+  const handleInputSearchChange = (event) => {
+    setInputSearch(event.target.value);
+  };
+
+  const filteredTodos = useMemo(() => {
+    return todos.filter((todo) => {
+      const lowerCaseText = todo.text.toLowerCase();
+
+      return lowerCaseText.includes(inputSearch.toLowerCase());
+    });
+  }, [inputSearch, todos]);
+
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Todo List Manager</h1>
 
-      <form className={styles.form} onSubmit={onTodoCreate}>
-        <input
-          className={styles.input}
-          name="todoText"
-          value={formData.todoText}
-          onChange={onFormChange}
-          type="text"
-          placeholder="Enter task text!"
-        />
-
-        <button className={styles.button} type="submit">
-          Create Task!
-        </button>
-      </form>
+      <TodoCreationForm
+        formData={formData}
+        onFormChange={onFormChange}
+        onTodoCreate={onTodoCreate}
+      />
 
       <ol className={todos.length > 0 ? styles.listContainer : ""}>
         {todos.length > 0 && (
-          <div onClick={onTodoRemoveAll} className={styles.close} />
+          <div className={styles.searchContainer}>
+            <div>
+              <input
+                className={styles.searchInput}
+                value={inputSearch}
+                type="search"
+                placeholder="Search..."
+                onChange={handleInputSearchChange}
+              />
+              <button
+                className={styles.searchButton}
+                onClick={isSort ? onTodoSortReverse : onTodoSort}
+              >
+                sort
+              </button>
+            </div>
+            <div onClick={onTodoRemoveAll} className={styles.close} />
+          </div>
         )}
-        {todos.map((todo, index) =>
+        {filteredTodos.map((todo, index) =>
           todo.isEditMode ? (
             <TodoEditMode
               id={todo.id}

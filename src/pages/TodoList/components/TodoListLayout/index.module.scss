@@ -8,12 +8,6 @@
 	font-size: 20px;
 }
 
-.form {
-	display: flex;
-	align-items: center;
-	margin-bottom: 20px;
-}
-
 .listContainer {
 	max-width: 800px;
 	padding: 10px;
@@ -24,30 +18,37 @@
 	border-radius: 20px;
 }
 
-.input {
-	width: 640px;
+.searchContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.searchInput {
+	width: 300px;
 	padding: 5px 10px;
 	margin-right: 10px;
 	border: 1px solid black;
-	border-radius: 5px;
+	border-radius: 10px;
 	font-size: 16px;
-	background: rgb(221, 213, 213);
+	background: rgb(187, 176, 176);
 }
 
-.button {
-	width: 150px;
-	padding: 7px 10px;
-	border: 1px solid black;
+.searchButton {
+	color: #b73333;
+	padding: 6px;
+	font-size: 16px;
 	border-radius: 5px;
-	background: rgb(216, 127, 127);
+	background: rgb(105, 102, 102);
+	transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
 
 	&:hover {
-		background: rgb(161, 95, 95);
+		color: white;
+		background: #992b2b;
 	}
 }
 
 .close {
-	left: 95%;
 	width: 40px;
 	height: 40px;
 	border-radius: 40px;
