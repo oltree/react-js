@@ -27,6 +27,7 @@
 .searchInput {
 	width: 300px;
 	padding: 5px 10px;
+	margin-right: 10px;
 	border: 1px solid black;
 	border-radius: 10px;
 	font-size: 16px;
@@ -34,12 +35,16 @@
 }
 
 .searchButton {
-	padding: 5px;
+	color: #b73333;
+	padding: 6px;
+	font-size: 16px;
 	border-radius: 5px;
-	background: rgb(70, 129, 218);
+	background: rgb(105, 102, 102);
+	transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
 
 	&:hover {
-		background: rgb(57, 104, 175);
+		color: white;
+		background: #992b2b;
 	}
 }
 

@@ -1,6 +1,10 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import TodoListLayout from "../components/TodoListLayout";
+
+import { useForm } from "../../../hooks";
+
 import {
   CREATE_TODO,
   REMOVE_TODO,
@@ -9,18 +13,16 @@ import {
   COMPLETE_TODO,
   REMOVE_ALL_TODO,
   SORT_TODO,
+  REVERSE_SORT_TODO,
+  DEFAULT_TODO,
 } from "../actions";
-
-import TodoListLayout from "../components/TodoListLayout";
-
-import { useForm } from "../../../hooks";
 
 import { todosSelector } from "../selectors";
 
 const TodoListContainer = () => {
   const dispatch = useDispatch();
 
-  const todos = useSelector(todosSelector);
+  const { todos, isSort } = useSelector(todosSelector);
 
   const [formData, handleFormChange, handleFormReset] = useForm({
     todoText: "",
@@ -76,9 +78,18 @@ const TodoListContainer = () => {
     dispatch(SORT_TODO());
   }, [dispatch]);
 
+  const handleTodoSortReverse = useCallback(() => {
+    dispatch(REVERSE_SORT_TODO());
+  }, [dispatch]);
+
+  const handleTodoDafautState = useCallback(() => {
+    dispatch(DEFAULT_TODO());
+  }, [dispatch]);
+
   return (
     <TodoListLayout
       todos={todos}
+      isSort={isSort}
       formData={formData}
       onFormChange={handleFormChange}
       onTodoCreate={handleTodoCreate}
@@ -88,6 +99,8 @@ const TodoListContainer = () => {
       onTodoComlete={handleTodoComlete}
       onTodoRemoveAll={handleTodoRemoveAll}
       onTodoSort={handleTodoSort}
+      onTodoSortReverse={handleTodoSortReverse}
+      onTodoDafautState={handleTodoDafautState}
     />
   );
 };

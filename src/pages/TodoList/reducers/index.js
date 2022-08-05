@@ -5,6 +5,7 @@ import * as actions from "../actions";
 
 const defaultState = {
   todos: [],
+  isSort: null,
 };
 
 export const todosReducer = handleActions(
@@ -85,7 +86,29 @@ export const todosReducer = handleActions(
 
       return {
         ...state,
+        isSort: true,
         todos: sortTodo,
+      };
+    },
+    [actions.REVERSE_SORT_TODO]: (state) => {
+      const todosCopy = [...state.todos];
+
+      const reverseSortTodo = todosCopy
+        .sort((a, b) => (a.text > b.text ? 1 : -1))
+        .reverse();
+
+      return {
+        ...state,
+        isSort: false,
+        todos: reverseSortTodo,
+      };
+    },
+    [actions.DEFAULT_TODO]: (state) => {
+      const todosCopy = [...state.todos];
+
+      return {
+        ...state,
+        todos: todosCopy,
       };
     },
   },

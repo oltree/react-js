@@ -9,6 +9,7 @@ import styles from "./index.module.scss";
 
 const TodoListLayout = ({
   todos,
+  isSort,
   formData,
   onFormChange,
   onTodoCreate,
@@ -18,6 +19,7 @@ const TodoListLayout = ({
   onTodoComlete,
   onTodoRemoveAll,
   onTodoSort,
+  onTodoSortReverse,
 }) => {
   const [inputSearch, setInputSearch] = useState("");
 
@@ -46,16 +48,21 @@ const TodoListLayout = ({
       <ol className={todos.length > 0 ? styles.listContainer : ""}>
         {todos.length > 0 && (
           <div className={styles.searchContainer}>
-            <input
-              className={styles.searchInput}
-              value={inputSearch}
-              type="search"
-              placeholder="Search..."
-              onChange={handleInputSearchChange}
-            />
-            <button className={styles.searchButton} onClick={onTodoSort}>
-              sort
-            </button>
+            <div>
+              <input
+                className={styles.searchInput}
+                value={inputSearch}
+                type="search"
+                placeholder="Search..."
+                onChange={handleInputSearchChange}
+              />
+              <button
+                className={styles.searchButton}
+                onClick={isSort ? onTodoSortReverse : onTodoSort}
+              >
+                sort
+              </button>
+            </div>
             <div onClick={onTodoRemoveAll} className={styles.close} />
           </div>
         )}
