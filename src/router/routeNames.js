@@ -7,4 +7,5 @@ export const ROUTE_NAMES = {
   FORMS: "/forms",
   REDUX_COUNTERS: "/redux-counters",
   TODO_LIST: "/todo-list",
+  DATA_FETCHING: "data-fetching",
 };
