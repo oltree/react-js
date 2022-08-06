@@ -82,7 +82,7 @@ export const todosReducer = handleActions(
     [actions.SORT_TODO]: (state) => {
       const todosCopy = [...state.todos];
 
-      const sortTodo = todosCopy.sort((a, b) => (a.text > b.text ? 1 : -1));
+      const sortTodo = todosCopy.sort((a, b) => a.text.localeCompare(b.text));
 
       return {
         ...state,
@@ -94,7 +94,7 @@ export const todosReducer = handleActions(
       const todosCopy = [...state.todos];
 
       const reverseSortTodo = todosCopy
-        .sort((a, b) => (a.text > b.text ? 1 : -1))
+        .sort((a, b) => a.text.localeCompare(b.text))
         .reverse();
 
       return {

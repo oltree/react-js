@@ -60,7 +60,7 @@ const TodoListLayout = ({
                 className={styles.searchButton}
                 onClick={isSort ? onTodoSortReverse : onTodoSort}
               >
-                sort
+                SORT
               </button>
             </div>
             <div onClick={onTodoRemoveAll} className={styles.close} />
