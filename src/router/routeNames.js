@@ -8,4 +8,5 @@ export const ROUTE_NAMES = {
   REDUX_COUNTERS: "/redux-counters",
   TODO_LIST: "/todo-list",
   DATA_FETCHING: "data-fetching",
+  RENDER_PROP: "render-prop",
 };

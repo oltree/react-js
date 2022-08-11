@@ -4,7 +4,6 @@ import PokemonCard from "../../../components/PomemonCard";
 import styles from "./index.module.scss";
 
 const DataFetchingLauout = ({ data, isLoading, error }) => {
-  console.log(data);
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Pokemons GO</h1>

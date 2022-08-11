@@ -24,7 +24,7 @@ export default FunctionalCounterContainer;
   const handleIncrement = useCallback(() => setCount((state) => state + 1), []); */
 //useCallback - мемоизирует функции(принимает cb и arr-зависимостей)
 //обновленное значение count можно не передавать в arr, если мы используем cb-fn
-//useMemo - мемоизирует объекты, массивы
+//useMemo - мемоизирует значения объектов, массивов
 /* const userData = useMemo(() => {
     return { name: "alex" };
   }, []); */

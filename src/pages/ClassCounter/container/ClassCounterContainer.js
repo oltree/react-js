@@ -64,7 +64,7 @@ export default ClassCounterContainer;
     console.log("Did update");
   } */
 
-//нет смысла использовать, т.к. мы used PureComponent(а этот метод так есть из коробки)
+//нет смысла использовать, т.к. мы used PureComponent(а этот метод из коробки)
 /* shouldComponentUpdate(nextProps, nextState, nextContext) {
     console.log("Should update?");
 

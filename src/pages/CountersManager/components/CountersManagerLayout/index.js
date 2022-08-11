@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 import Counter from "../../../../components/Counter";
+import List from "../../../../components/List";
 
 import styles from "./index.module.scss";
 
@@ -25,18 +26,21 @@ const CountersManagerLayout = ({
           Reset
         </button>
       </div>
-      <div className={styles.item}>
-        {counters.map(({ id, countValue }) => (
-          <Counter
-            id={id}
-            key={id}
-            countValue={countValue}
-            onIncrement={onIncrement}
-            onDecrement={onDecrement}
-            onReset={onReset}
-            onDelete={onDelete}
-          />
-        ))}
+      <div>
+        <List
+          dataToRender={counters}
+          render={({ countValue, id }) => (
+            <Counter
+              id={id}
+              key={id}
+              countValue={countValue}
+              onIncrement={onIncrement}
+              onDecrement={onDecrement}
+              onReset={onReset}
+              onDelete={onDelete}
+            />
+          )}
+        />
       </div>
       <div className={styles.footer}>
         <p className={styles.subtitle}>Total Couters: {counters.length}</p>

@@ -6,7 +6,7 @@ import configureStore from "./store/configureStore";
 import Layouts from "./components/Layouts";
 import Router from "./router/Router";
 
-import "./static/index.scss";
+import "./index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore();

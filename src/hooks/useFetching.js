@@ -26,11 +26,11 @@ export const useFetching = (
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [asyncCallback]);
 
   useEffect(() => {
     handleDataLoad();
-  }, [isLoadOnMount]);
+  }, [isLoadOnMount, handleDataLoad]);
 
   return { data, isLoading, error, handleDataLoad };
 };

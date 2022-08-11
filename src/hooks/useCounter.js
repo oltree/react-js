@@ -13,7 +13,7 @@ export const useCounter = (defaultValue) => {
     });
   }, []);
 
-  const handleReset = useCallback(() => setCount(defaultValue), [defaultValue]); //нужен ли useCallback????
+  const handleReset = useCallback(() => setCount(defaultValue), [defaultValue]);
 
   return { count, handleIncrement, handleDecrement, handleReset };
 };
