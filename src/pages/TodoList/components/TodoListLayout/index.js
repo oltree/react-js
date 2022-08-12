@@ -1,15 +1,22 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
-import TodoCreationForm from "../TodoCreationForm";
+import FormForCreatingTodos from "../FormForCreatingTodos";
+import TodoListHeader from "../TodoListHeader";
 import TodoEditMode from "../TodoEditMode";
 import TodoReadMode from "../TodoReadMode";
+
+import {
+  FILTER_BY_OPTIONS,
+  FILTER_SCENARIOS,
+  SORT_OPTIONS,
+  SORT_SCENARIOS,
+} from "../../config";
 
 import styles from "./index.module.scss";
 
 const TodoListLayout = ({
   todos,
-  isSort,
   formData,
   onFormChange,
   onTodoCreate,
@@ -18,77 +25,99 @@ const TodoListLayout = ({
   onTodoEditSave,
   onTodoComlete,
   onTodoRemoveAll,
-  onTodoSort,
-  onTodoSortReverse,
 }) => {
   const [inputSearch, setInputSearch] = useState("");
+  const [sortOption, setSortOption] = useState(SORT_OPTIONS.DEFAULT);
+  const [filterOption, setFilterOption] = useState(FILTER_BY_OPTIONS.DEFAULT);
 
   const handleInputSearchChange = (event) => {
     setInputSearch(event.target.value);
   };
 
-  const filteredTodos = useMemo(() => {
-    return todos.filter((todo) => {
+  const handleSortOptionChange = useCallback((event) => {
+    setSortOption(event.target.value);
+  }, []);
+
+  const handleFilterCompletedTodos = useCallback((event) => {
+    setFilterOption(event.target.value);
+  }, []);
+
+  const todosSortingOptions = useMemo(() => {
+    const todosCopy = [...todos];
+
+    if (FILTER_SCENARIOS[filterOption]) {
+      const filteredTodos = todosCopy.filter(FILTER_SCENARIOS[filterOption]);
+
+      if (SORT_SCENARIOS[sortOption]) {
+        return filteredTodos.sort(SORT_SCENARIOS[sortOption]);
+      }
+
+      return filteredTodos;
+    }
+
+    if (SORT_SCENARIOS[sortOption]) {
+      return todosCopy.sort(SORT_SCENARIOS[sortOption]);
+    }
+
+    return todos;
+  }, [todos, sortOption, filterOption]);
+
+  const todosToRender = useMemo(() => {
+    return todosSortingOptions.filter((todo) => {
       const lowerCaseText = todo.text.toLowerCase();
 
       return lowerCaseText.includes(inputSearch.toLowerCase());
     });
-  }, [inputSearch, todos]);
+  }, [inputSearch, todosSortingOptions]);
 
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Todo List Manager</h1>
 
-      <TodoCreationForm
+      <FormForCreatingTodos
         formData={formData}
         onFormChange={onFormChange}
         onTodoCreate={onTodoCreate}
       />
 
-      <ol className={todos.length > 0 ? styles.listContainer : ""}>
-        {todos.length > 0 && (
-          <div className={styles.searchContainer}>
-            <div>
-              <input
-                className={styles.searchInput}
-                value={inputSearch}
-                type="search"
-                placeholder="Search..."
-                onChange={handleInputSearchChange}
-              />
-              <button
-                className={styles.searchButton}
-                onClick={isSort ? onTodoSortReverse : onTodoSort}
-              >
-                SORT
-              </button>
-            </div>
-            <div onClick={onTodoRemoveAll} className={styles.close} />
-          </div>
-        )}
-        {filteredTodos.map((todo, index) =>
-          todo.isEditMode ? (
-            <TodoEditMode
-              id={todo.id}
-              key={todo.id}
-              text={todo.text}
-              onTodoEditAndCancel={onTodoEditAndCancel}
-              onTodoEditSave={onTodoEditSave}
-            />
-          ) : (
-            <TodoReadMode
-              index={index}
-              key={todo.id}
-              id={todo.id}
-              text={todo.text}
-              isCompleted={todo.isCompleted}
-              onTodoRemove={onTodoRemove}
-              onTodoEditAndCancel={onTodoEditAndCancel}
-              onTodoComlete={onTodoComlete}
-            />
-          )
-        )}
-      </ol>
+      {todos.length > 0 && (
+        <div className={styles.listContainer}>
+          <TodoListHeader
+            inputSearch={inputSearch}
+            onInputSearchChange={handleInputSearchChange}
+            sortOption={sortOption}
+            onSortOptionChange={handleSortOptionChange}
+            filterOption={filterOption}
+            onFilterCompletedTodos={handleFilterCompletedTodos}
+            onTodoRemoveAll={onTodoRemoveAll}
+          />
+
+          <ol className={styles.list}>
+            {todosToRender.map((todo, index) =>
+              todo.isEditMode ? (
+                <TodoEditMode
+                  id={todo.id}
+                  key={todo.id}
+                  text={todo.text}
+                  onTodoEditAndCancel={onTodoEditAndCancel}
+                  onTodoEditSave={onTodoEditSave}
+                />
+              ) : (
+                <TodoReadMode
+                  index={index}
+                  key={todo.id}
+                  id={todo.id}
+                  text={todo.text}
+                  isCompleted={todo.isCompleted}
+                  onTodoRemove={onTodoRemove}
+                  onTodoEditAndCancel={onTodoEditAndCancel}
+                  onTodoComlete={onTodoComlete}
+                />
+              )
+            )}
+          </ol>
+        </div>
+      )}
     </div>
   );
 };

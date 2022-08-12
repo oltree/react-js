@@ -12,9 +12,6 @@ import {
   SAVE_TODO,
   COMPLETE_TODO,
   REMOVE_ALL_TODO,
-  SORT_TODO,
-  REVERSE_SORT_TODO,
-  DEFAULT_TODO,
 } from "../actions";
 
 import { todosSelector } from "../selectors";
@@ -22,7 +19,7 @@ import { todosSelector } from "../selectors";
 const TodoListContainer = () => {
   const dispatch = useDispatch();
 
-  const { todos, isSort } = useSelector(todosSelector);
+  const todos = useSelector(todosSelector);
 
   const [formData, handleFormChange, handleFormReset] = useForm({
     todoText: "",
@@ -74,22 +71,9 @@ const TodoListContainer = () => {
     dispatch(REMOVE_ALL_TODO());
   };
 
-  const handleTodoSort = useCallback(() => {
-    dispatch(SORT_TODO());
-  }, [dispatch]);
-
-  const handleTodoSortReverse = useCallback(() => {
-    dispatch(REVERSE_SORT_TODO());
-  }, [dispatch]);
-
-  const handleTodoDafautState = useCallback(() => {
-    dispatch(DEFAULT_TODO());
-  }, [dispatch]);
-
   return (
     <TodoListLayout
       todos={todos}
-      isSort={isSort}
       formData={formData}
       onFormChange={handleFormChange}
       onTodoCreate={handleTodoCreate}
@@ -98,9 +82,6 @@ const TodoListContainer = () => {
       onTodoEditSave={handleTodoEditSave}
       onTodoComlete={handleTodoComlete}
       onTodoRemoveAll={handleTodoRemoveAll}
-      onTodoSort={handleTodoSort}
-      onTodoSortReverse={handleTodoSortReverse}
-      onTodoDafautState={handleTodoDafautState}
     />
   );
 };

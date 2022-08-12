@@ -2,7 +2,7 @@ import { memo } from "react";
 
 import styles from "./index.module.scss";
 
-const TodoCreationForm = ({ formData, onFormChange, onTodoCreate }) => {
+const FormForCreatingTodos = ({ formData, onFormChange, onTodoCreate }) => {
   return (
     <form className={styles.form} onSubmit={onTodoCreate}>
       <input
@@ -21,4 +21,4 @@ const TodoCreationForm = ({ formData, onFormChange, onTodoCreate }) => {
   );
 };
 
-export default memo(TodoCreationForm);
+export default memo(FormForCreatingTodos);
