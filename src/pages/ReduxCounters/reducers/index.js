@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuid } from "uuid";
 
-const defaultState = {
+const initialState = {
   counters: [],
 };
 
 export const countersManagerSlice = createSlice({
   name: "countersManager",
-  initialState: defaultState,
+  initialState,
   reducers: {
     createCounter: (state) => {
       const newCounter = {
@@ -17,7 +17,7 @@ export const countersManagerSlice = createSlice({
 
       state.counters.push(newCounter);
     },
-    removeAllCounters: () => defaultState,
+    removeAllCounters: () => initialState,
     incrementCounter: (state, { payload: id }) => {
       const foundCouter = state.counters.find((counter) => counter.id === id);
 
