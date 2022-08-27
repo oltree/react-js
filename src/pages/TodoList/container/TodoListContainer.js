@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import TodoListLayout from "../components/TodoListLayout";
 
-import { useForm } from "../../../hooks";
-
 import {
-  CREATE_TODO,
-  REMOVE_TODO,
-  EDIT_TODO,
-  SAVE_TODO,
-  COMPLETE_TODO,
-  REMOVE_ALL_TODO,
-} from "../actions";
+  createTodo,
+  removeTodo,
+  editTodo,
+  saveTodo,
+  completeTodo,
+  removeAllTodo,
+} from "../reducers";
+
+import { useForm } from "../../../hooks";
 
 import { todosSelector } from "../selectors";
 
@@ -31,7 +31,7 @@ const TodoListContainer = () => {
     const trimmedValue = formData.todoText.trim();
 
     if (trimmedValue.length > 3) {
-      dispatch(CREATE_TODO(formData.todoText));
+      dispatch(createTodo(formData.todoText));
     }
 
     handleFormReset();
@@ -39,14 +39,14 @@ const TodoListContainer = () => {
 
   const handleTodoRemove = useCallback(
     (id) => {
-      dispatch(REMOVE_TODO(id));
+      dispatch(removeTodo(id));
     },
     [dispatch]
   );
 
   const handleTodoEditAndCancel = useCallback(
     (id) => {
-      dispatch(EDIT_TODO(id));
+      dispatch(editTodo(id));
     },
     [dispatch]
   );
@@ -54,7 +54,7 @@ const TodoListContainer = () => {
   const handleTodoEditSave = useCallback(
     ({ id, updatedText }) => {
       if (updatedText.trim().length > 3) {
-        dispatch(SAVE_TODO({ id, updatedText }));
+        dispatch(saveTodo({ id, updatedText }));
       }
     },
     [dispatch]
@@ -62,13 +62,13 @@ const TodoListContainer = () => {
 
   const handleTodoComlete = useCallback(
     (id) => {
-      dispatch(COMPLETE_TODO(id));
+      dispatch(completeTodo(id));
     },
     [dispatch]
   );
 
   const handleTodoRemoveAll = () => {
-    dispatch(REMOVE_ALL_TODO());
+    dispatch(removeAllTodo());
   };
 
   return (

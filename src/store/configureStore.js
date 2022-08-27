@@ -1,10 +1,11 @@
-import { legacy_createStore } from "redux";
-import { composeWithDevTools } from "@redux-devtools/extension";
+import { configureStore } from "@reduxjs/toolkit";
 
-import { rootReducer } from "./rootReducer";
+import countersManagerSlice from "../pages/ReduxCounters/reducers";
+import todoListSlice from "../pages/TodoList/reducers";
 
-function configureStore() {
-  return legacy_createStore(rootReducer, composeWithDevTools());
-}
-
-export default configureStore;
+export const store = configureStore({
+  reducer: {
+    countersManager: countersManagerSlice,
+    todosManager: todoListSlice,
+  },
+});

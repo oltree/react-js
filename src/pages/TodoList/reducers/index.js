@@ -1,17 +1,15 @@
-import { handleActions } from "redux-actions";
+import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuid } from "uuid";
 
-import * as actions from "../actions";
-
-const defaultState = {
+const initialState = {
   todos: [],
 };
 
-export const todosReducer = handleActions(
-  {
-    [actions.CREATE_TODO]: (state, { payload: todoText }) => {
-      const todosCopy = [...state.todos];
-
+export const todoListSlice = createSlice({
+  name: "todoList",
+  initialState,
+  reducers: {
+    createTodo: (state, { payload: todoText }) => {
       const todoItem = {
         id: uuid(),
         text: todoText,
@@ -19,65 +17,42 @@ export const todosReducer = handleActions(
         isEditMode: false,
       };
 
-      todosCopy.unshift(todoItem);
-
-      return {
-        ...state,
-        todos: todosCopy,
-      };
+      state.todos.unshift(todoItem);
     },
-    [actions.REMOVE_TODO]: (state, { payload: id }) => {
-      const todosCopy = [...state.todos];
+    removeTodo: (state, { payload: id }) => {
+      const todoIndexToRemove = state.todos.findIndex((todo) => todo.id === id);
 
-      const todoIndexToRemove = todosCopy.findIndex((todo) => todo.id === id);
-
-      todosCopy.splice(todoIndexToRemove, 1);
-
-      return {
-        ...state,
-        todos: todosCopy,
-      };
+      state.todos.splice(todoIndexToRemove, 1);
     },
-    [actions.EDIT_TODO]: (state, { payload: id }) => {
-      const todosCopy = [...state.todos];
-
-      const foundTodo = todosCopy.find((todo) => todo.id === id);
+    editTodo: (state, { payload: id }) => {
+      const foundTodo = state.todos.find((todo) => todo.id === id);
 
       foundTodo.isEditMode = !foundTodo.isEditMode;
-
-      return {
-        ...state,
-        todos: todosCopy,
-      };
     },
-    [actions.SAVE_TODO]: (state, { payload }) => {
+    saveTodo: (state, { payload }) => {
       const { id, updatedText } = payload;
 
-      const todosCopy = [...state.todos];
-
-      const foundTodo = todosCopy.find((todo) => todo.id === id);
+      const foundTodo = state.todos.find((todo) => todo.id === id);
 
       foundTodo.text = updatedText;
       foundTodo.isEditMode = false;
-
-      return {
-        ...state,
-        todos: todosCopy,
-      };
     },
-    [actions.COMPLETE_TODO]: (state, { payload: id }) => {
-      const todosCopy = [...state.todos];
-
-      const foundTodo = todosCopy.find((todo) => todo.id === id);
+    completeTodo: (state, { payload: id }) => {
+      const foundTodo = state.todos.find((todo) => todo.id === id);
 
       foundTodo.isCompleted = true;
-
-      return {
-        ...state,
-        todos: todosCopy,
-      };
     },
-    [actions.REMOVE_ALL_TODO]: () => defaultState,
+    removeAllTodo: () => initialState,
   },
-  defaultState
-);
+});
+
+export const {
+  createTodo,
+  removeTodo,
+  editTodo,
+  saveTodo,
+  completeTodo,
+  removeAllTodo,
+} = todoListSlice.actions;
+
+export default todoListSlice.reducer;

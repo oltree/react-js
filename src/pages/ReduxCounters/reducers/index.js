@@ -1,89 +1,55 @@
-import { handleActions } from "redux-actions";
+import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuid } from "uuid";
-
-import * as actions from "../actions";
 
 const defaultState = {
   counters: [],
-  //...others fields
 };
 
-export const countersManagerReducer = handleActions(
-  {
-    [actions.CREATE_COUNTER]: (state) => {
+export const countersManagerSlice = createSlice({
+  name: "countersManager",
+  initialState: defaultState,
+  reducers: {
+    createCounter: (state) => {
       const newCounter = {
         id: uuid(),
         countValue: 0,
       };
 
-      const updatedCounters = state.counters.map(({ id, countValue }) => {
-        return {
-          id,
-          countValue: countValue % 2 === 0 ? countValue + 1 : countValue,
-        };
-      });
-
-      return {
-        ...state, //all fields defaultState
-        counters: [...updatedCounters, newCounter],
-      };
+      state.counters.push(newCounter);
     },
-    [actions.REMOVE_ALL_COUNTERS]: () => defaultState,
-    [actions.INCREMENT_COUNTER]: (state, { payload: id }) => {
-      const countersCopy = [...state.counters];
-
-      const foundCouter = countersCopy.find((counter) => counter.id === id);
+    removeAllCounters: () => defaultState,
+    incrementCounter: (state, { payload: id }) => {
+      const foundCouter = state.counters.find((counter) => counter.id === id);
 
       foundCouter.countValue += 1;
-
-      return {
-        ...state,
-        counters: countersCopy,
-      };
     },
-    [actions.DECREMENT_COUNTER]: (state, { payload: id }) => {
-      const countersCopy = [...state.counters];
-
-      const foundCouter = countersCopy.find((counter) => counter.id === id);
+    decrementCounter: (state, { payload: id }) => {
+      const foundCouter = state.counters.find((counter) => counter.id === id);
 
       if (foundCouter.countValue > 0) foundCouter.countValue -= 1;
-
-      return {
-        ...state,
-        counters: countersCopy,
-      };
     },
-    [actions.RESET_COUNTER]: (state, { payload: id }) => {
-      const countersCopy = [...state.counters];
-
-      const foundCouter = countersCopy.find((counter) => counter.id === id);
+    resetCounter: (state, { payload: id }) => {
+      const foundCouter = state.counters.find((counter) => counter.id === id);
 
       foundCouter.countValue = 0;
-
-      return {
-        ...state,
-        counters: countersCopy,
-      };
     },
-    [actions.DELETE_COUNTER]: (state, { payload: id }) => {
-      const countersCopy = [...state.counters];
-
-      const counterIndexToRemove = countersCopy.findIndex(
+    deleteCounter: (state, { payload: id }) => {
+      const counterIndexToRemove = state.counters.findIndex(
         (counter) => counter.id === id
       );
 
-      countersCopy.splice(counterIndexToRemove, 1);
-
-      return {
-        ...state,
-        counters: countersCopy.map(({ id, countValue }) => {
-          return {
-            id,
-            countValue: countValue % 2 !== 0 ? countValue - 1 : countValue,
-          };
-        }),
-      };
+      state.counters.splice(counterIndexToRemove, 1);
     },
   },
-  defaultState
-);
+});
+
+export const {
+  createCounter,
+  removeAllCounters,
+  incrementCounter,
+  decrementCounter,
+  resetCounter,
+  deleteCounter,
+} = countersManagerSlice.actions;
+
+export default countersManagerSlice.reducer;

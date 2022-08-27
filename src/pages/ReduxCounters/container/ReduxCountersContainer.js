@@ -4,13 +4,13 @@ import { useCallback } from "react";
 import ReduxCountersLayout from "../components/ReduxCountersLayout";
 
 import {
-  CREATE_COUNTER,
-  REMOVE_ALL_COUNTERS,
-  INCREMENT_COUNTER,
-  DECREMENT_COUNTER,
-  RESET_COUNTER,
-  DELETE_COUNTER,
-} from "../actions";
+  createCounter,
+  removeAllCounters,
+  incrementCounter,
+  decrementCounter,
+  resetCounter,
+  deleteCounter,
+} from "../reducers";
 
 import { countersSelector } from "../selectors";
 
@@ -20,37 +20,37 @@ const ReduxCountersContainer = () => {
   const counters = useSelector(countersSelector); //state - all store
 
   const handleCounterCreate = () => {
-    dispatch(CREATE_COUNTER());
+    dispatch(createCounter());
   };
 
   const handleRemoveAllCounters = () => {
-    dispatch(REMOVE_ALL_COUNTERS());
+    dispatch(removeAllCounters());
   };
 
   const handleIncrement = useCallback(
     (id) => {
-      dispatch(INCREMENT_COUNTER(id));
+      dispatch(incrementCounter(id));
     },
     [dispatch]
   );
 
   const handleDecrement = useCallback(
     (id) => {
-      dispatch(DECREMENT_COUNTER(id));
+      dispatch(decrementCounter(id));
     },
     [dispatch]
   );
 
   const handleReset = useCallback(
     (id) => {
-      dispatch(RESET_COUNTER(id));
+      dispatch(resetCounter(id));
     },
     [dispatch]
   );
 
   const handleDelete = useCallback(
     (id) => {
-      dispatch(DELETE_COUNTER(id));
+      dispatch(deleteCounter(id));
     },
     [dispatch]
   );
