@@ -1,84 +1,30 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import DataFetchingLauout from "../components";
 
-import { getPokemons } from "../api";
+import { pokemonsSelector } from "../selectors";
 
-import { useFetching } from "../../../hooks/useFetching";
+import { loadPokemons } from "../reducers";
 
 const DataFetchingContainer = () => {
-  const { data, isLoading, error } = useFetching(getPokemons, []);
+  const dispatch = useDispatch();
 
-  return <DataFetchingLauout data={data} isLoading={isLoading} error={error} />;
-};
+  useEffect(() => {
+    dispatch(loadPokemons());
+  }, [dispatch]);
 
-export default DataFetchingContainer;
+  const pokemons = useSelector(pokemonsSelector);
 
-/* //Method with promises
-useEffect(() => {
-    setLoading(true);
-    delay(3000).then(() => {
-      fetch(`${POKEMONS_URL}/pokemon`)
-        .then((response) => response.json())
-        .then((data) => {
-          setPokemons(data.results);
-        })
-        .catch((error) => {
-          setError(error.message);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    });
-  }, []); */
-
-/* //Method async-await with message WARNING
-useEffect(async () => {
-    try {
-      setLoading(true);
-
-      await delay(3000);
-
-      const data = await fetch(`${POKEMONS_URL}/pokemon`).then((response) =>
-        response.json()
-      );
-
-      setPokemons(data.results);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  console.log(pokemons);
 
   return (
     <DataFetchingLauout
-      pokemons={pokemons}
-      isLoading={isLoading}
-      error={error}
+      data={pokemons.data.results}
+      isLoading={pokemons.isLoading}
+      error={pokemons.error}
     />
   );
-}; */
+};
 
-/* //Method async-await - good method, but no hooks
-	const [pokemons, setPokemons] = useState([]);
-  const [isLoading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        setLoading(true);
-
-        await delay(3000);
-
-        const data = await fetch(`${POKEMONS_URL}/pokemon`).then((response) =>
-          response.json()
-        );
-
-        setPokemons(data.results);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, []); */
+export default DataFetchingContainer;

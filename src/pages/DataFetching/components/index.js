@@ -12,7 +12,7 @@ const DataFetchingLauout = ({ data, isLoading, error }) => {
         {isLoading ? (
           <Spinner />
         ) : (
-          data.map(({ id, name, image, experience }) => (
+          data?.map(({ id, name, image, experience }) => (
             <PokemonCard
               key={id}
               name={name}
