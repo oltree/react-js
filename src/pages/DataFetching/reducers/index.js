@@ -1,18 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { api } from "../../../api/config";
+import { getPokemons } from "../api";
 
 const initialState = {
   isLoading: false,
-  data: [],
+  data: [], //pokemons
   error: null,
 };
 
-export const loadPokemons = createAsyncThunk("pokemos/fetchAll", async () => {
-  const response = await api.get("/pokemon");
-
-  return response.data;
-});
+export const loadPokemons = createAsyncThunk("pokemos/fetchAll", async () =>
+  getPokemons()
+);
 
 const pokemonsSlice = createSlice({
   name: "pokemons",

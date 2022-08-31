@@ -3,7 +3,7 @@ import PokemonCard from "../../../components/PomemonCard";
 
 import styles from "./index.module.scss";
 
-const DataFetchingLauout = ({ data, isLoading, error }) => {
+const DataFetchingLauout = ({ data, isLoading, error, handleClick }) => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Pokemons GO</h1>
@@ -14,10 +14,12 @@ const DataFetchingLauout = ({ data, isLoading, error }) => {
         ) : (
           data?.map(({ id, name, image, experience }) => (
             <PokemonCard
+              className={styles.pokemon}
               key={id}
               name={name}
               image={image}
               experience={experience}
+              handleClick={() => handleClick(id)}
             />
           ))
         )}

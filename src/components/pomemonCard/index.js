@@ -3,9 +3,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-const PokemonCard = ({ name, image, experience }) => {
+const PokemonCard = ({ name, image, experience, handleClick }) => {
   return (
-    <Card sx={{ maxWidth: 200 }}>
+    <Card sx={{ maxWidth: 200 }} onClick={handleClick}>
       <CardMedia component="img" height="200" image={image} alt={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
