@@ -8,7 +8,7 @@ const initialState = {
   error: null,
 };
 
-export const loadPokemons = createAsyncThunk("pokemos/fetchAll", async () =>
+export const loadPokemons = createAsyncThunk("pokemons/fetchAll", async () =>
   getPokemons()
 );
 
