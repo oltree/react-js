@@ -1,5 +1,5 @@
 import Spinner from "../../../../components/Spinner";
-import PokemonCard from "../../../../components/PomemonCard";
+import PokemonCard from "../PomemonCard";
 
 import styles from "./index.module.scss";
 
