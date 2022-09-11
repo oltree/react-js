@@ -1,9 +1,9 @@
-import Spinner from "../../../components/Spinner";
-import PokemonCard from "../../../components/PomemonCard";
+import Spinner from "../../../../components/Spinner";
+import PokemonCard from "../../../../components/PomemonCard";
 
 import styles from "./index.module.scss";
 
-const DataFetchingLauout = ({ data, isLoading, error, handleClick }) => {
+const PokemonsLayout = ({ data, isLoading, error, handleClick }) => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Pokemons GO</h1>
@@ -29,4 +29,4 @@ const DataFetchingLauout = ({ data, isLoading, error, handleClick }) => {
   );
 };
 
-export default DataFetchingLauout;
+export default PokemonsLayout;

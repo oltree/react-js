@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import DataFetchingLauout from "../components";
+import PokemonsLayout from "../components/PokemonsLayout";
 
 import { pokemonsSelector } from "../selectors";
 
 import { loadPokemons } from "../reducers";
 
-const DataFetchingContainer = () => {
+const PokemonsContainer = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const DataFetchingContainer = () => {
   console.log(pokemons.data);
 
   return (
-    <DataFetchingLauout
+    <PokemonsLayout
       data={pokemons.data}
       isLoading={pokemons.isLoading}
       error={pokemons.error}
@@ -34,4 +34,4 @@ const DataFetchingContainer = () => {
   );
 };
 
-export default DataFetchingContainer;
+export default PokemonsContainer;

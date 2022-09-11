@@ -10,7 +10,7 @@ import CountersManagerContainer from "../pages/CountersManager/container/Counter
 import FormsContainer from "../pages/Forms/container/FormsContainer";
 import ReduxCountersContainer from "../pages/ReduxCounters/container/ReduxCountersContainer";
 import TodoListContainer from "../pages/TodoList/container/TodoListContainer";
-import DataFetchingContainer from "../pages/DataFetching/container/DataFetchingContainer";
+import PokemonsContainer from "../pages/Pokemons/container/PokemonsContainer";
 import RenderPropContainer from "../pages/RenderProp/container/RenderPropContainer";
 import PokemonsDetailsContainer from "../pages/PokemonsDetails/container/PokemonsDetailsContainer";
 
@@ -38,7 +38,7 @@ const Router = () => {
       />
       <Route path={ROUTE_NAMES.TODO_LIST} element={<TodoListContainer />} />
       <Route path={ROUTE_NAMES.RENDER_PROP} element={<RenderPropContainer />} />
-      <Route path={ROUTE_NAMES.POKEMONS} element={<DataFetchingContainer />} />
+      <Route path={ROUTE_NAMES.POKEMONS} element={<PokemonsContainer />} />
       <Route
         path={ROUTE_NAMES.POKEMON_DETAILS}
         element={<PokemonsDetailsContainer />}
