@@ -1,4 +1,5 @@
 export const ROUTE_NAMES = {
+  SIGN_UP: "/sign-up",
   HOME: "/",
   CLASS_COUNTER: "/class-counter",
   FUCNTIONAL_COUNTER: "/fucntional-counter",

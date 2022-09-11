@@ -1,0 +1,45 @@
+.wrapper {
+	padding: 10px;
+	text-align: center;
+}
+
+.title {
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.form {
+	max-width: 400px;
+	padding: 10px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	border: 1px solid #000;
+	border-radius: 5px;
+}
+
+.input {
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.button {
+	width: 150px;
+	margin: 0 auto;
+	padding: 5px;
+	background: rgb(170, 117, 117);
+	border-radius: 5px;
+
+	&:hover {
+		background: rgb(122, 85, 85);
+	}
+}
+
+.message {
+	color: green;
+}
+
+.error {
+	color: red;
+}

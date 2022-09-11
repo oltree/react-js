@@ -12,7 +12,6 @@ const FormsContainer = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(loginForm);
   };
 
   //Показать/скрыть пароль

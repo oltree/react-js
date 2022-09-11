@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { ROUTE_NAMES } from "./routeNames";
 
+import SignUpContainer from "../pages/SignUp/container/SignUpContainer";
 import Home from "../pages/Home";
 import ClassCounterContainer from "../pages/ClassCounter/container/ClassCounterContainer";
 import FunctionalCounterContainer from "../pages/FunctionalCounter/container/FunctionalCounterContainer";
@@ -17,6 +18,7 @@ import PokemonsDetailsContainer from "../pages/PokemonsDetails/container/Pokemon
 const Router = () => {
   return (
     <Routes>
+      <Route path={ROUTE_NAMES.SIGN_UP} element={<SignUpContainer />} />
       <Route path={ROUTE_NAMES.HOME} element={<Home />} />
       <Route
         path={ROUTE_NAMES.CLASS_COUNTER}
