@@ -8,6 +8,8 @@ import { pokemonsSelector } from "../selectors";
 
 import { loadPokemons } from "../reducers";
 
+import { ROUTE_NAMES } from "../../../router/routeNames";
+
 const PokemonsContainer = () => {
   const dispatch = useDispatch();
 
@@ -20,9 +22,8 @@ const PokemonsContainer = () => {
   }, [dispatch]);
 
   const handleNavigateToPokemonsDetail = (pokemonId) => {
-    navigate(`/pokemons/${pokemonId}`);
+    navigate(`${ROUTE_NAMES.POKEMONS}/${pokemonId}`);
   };
-  console.log(pokemons.data);
 
   return (
     <PokemonsLayout
