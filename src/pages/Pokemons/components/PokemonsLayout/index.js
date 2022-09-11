@@ -3,7 +3,7 @@ import PokemonCard from "../../../../components/PomemonCard";
 
 import styles from "./index.module.scss";
 
-const PokemonsLayout = ({ data, isLoading, error, handleClick }) => {
+const PokemonsLayout = ({ pokemons, isLoading, error, handleClick }) => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Pokemons GO</h1>
@@ -12,7 +12,7 @@ const PokemonsLayout = ({ data, isLoading, error, handleClick }) => {
         {isLoading ? (
           <Spinner />
         ) : (
-          data?.map(({ id, name, image, experience }) => (
+          pokemons?.map(({ id, name, image, experience }) => (
             <PokemonCard
               className={styles.pokemon}
               key={id}

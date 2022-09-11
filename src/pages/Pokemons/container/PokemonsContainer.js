@@ -26,7 +26,7 @@ const PokemonsContainer = () => {
 
   return (
     <PokemonsLayout
-      data={pokemons.data}
+      pokemons={pokemons.data}
       isLoading={pokemons.isLoading}
       error={pokemons.error}
       handleClick={handleNavigateToPokemonsDetail}
