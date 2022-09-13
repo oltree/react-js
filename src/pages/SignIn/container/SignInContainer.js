@@ -5,7 +5,7 @@ import SignInLayout from "../components/SignInLayout";
 
 import { useForm } from "../../../hooks";
 
-import { auth } from "../reducers";
+import { auth, exitAccount } from "../reducers";
 
 const SignInContainer = () => {
   const dispatch = useDispatch();
@@ -26,11 +26,16 @@ const SignInContainer = () => {
     [dispatch, signInFrom, handleReset]
   );
 
+  const handleExitAccount = () => {
+    dispatch(exitAccount());
+  };
+
   return (
     <SignInLayout
       signInFrom={signInFrom}
       handleSubmit={handleSubmit}
       handleFormChange={handleFormChange}
+      handleExitAccount={handleExitAccount}
     />
   );
 };

@@ -18,6 +18,11 @@ export const auth = createAsyncThunk("auth/signIn", async (data) => {
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    exitAccount: () => {
+      localStorage.clear();
+    },
+  },
   extraReducers: {
     [auth.pending]: (state) => {
       state.isLoading = true;
@@ -37,5 +42,7 @@ const authSlice = createSlice({
     },
   },
 });
+
+export const { exitAccount } = authSlice.actions;
 
 export default authSlice.reducer;

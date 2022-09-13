@@ -1,4 +1,9 @@
-const SignInLayout = ({ signInFrom, handleSubmit, handleFormChange }) => {
+const SignInLayout = ({
+  signInFrom,
+  handleSubmit,
+  handleFormChange,
+  handleExitAccount,
+}) => {
   return (
     <div>
       <h1>Sign In</h1>
@@ -21,6 +26,8 @@ const SignInLayout = ({ signInFrom, handleSubmit, handleFormChange }) => {
 
         <button type="submit">Login</button>
       </form>
+
+      <button onClick={handleExitAccount}>exit</button>
     </div>
   );
 };
