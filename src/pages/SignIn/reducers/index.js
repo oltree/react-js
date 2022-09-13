@@ -19,9 +19,7 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    exitAccount: () => {
-      localStorage.clear();
-    },
+    exitAccount: () => localStorage.clear(),
   },
   extraReducers: {
     [auth.pending]: (state) => {
