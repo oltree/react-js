@@ -6,4 +6,10 @@ export const apiConfig = {
   baseURL: BASE_URL,
 };
 
-export const api = axios.create(apiConfig);
+const api = axios.create(apiConfig);
+
+api.interceptors.request.use((axiosConfig) => {
+  console.log(axiosConfig);
+});
+
+export { api };

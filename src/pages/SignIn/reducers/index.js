@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { signIn } from "../api";
+import { LOCAL_STORAGE_KEYS } from "../../../constants";
 
 const initialState = {
   isLoading: false,
@@ -32,7 +33,7 @@ const authSlice = createSlice({
       state.userInfo = userInfo;
       state.accessToken = accessToken;
 
-      localStorage.setItem("accessToken", accessToken);
+      localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
     },
     [auth.rejected]: (state, { error }) => {
       state.isLoading = false;
