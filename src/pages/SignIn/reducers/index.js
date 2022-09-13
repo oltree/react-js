@@ -8,6 +8,7 @@ const initialState = {
   error: null,
   userInfo: {},
   accessToken: null,
+  isAuth: false,
 };
 
 export const auth = createAsyncThunk("auth/signIn", async (data) => {
@@ -32,6 +33,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.userInfo = userInfo;
       state.accessToken = accessToken;
+      state.isAuth = true;
 
       localStorage.setItem(LOCAL_STORAGE_KEYS.ACCESS_TOKEN, accessToken);
     },
