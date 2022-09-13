@@ -9,7 +9,11 @@ const initialState = {
   accessToken: {},
 };
 
-export const auth = createAsyncThunk("auth/signIn", signIn);
+export const auth = createAsyncThunk("auth/signIn", async (data) => {
+  const response = await signIn(data);
+
+  return response.data;
+});
 
 const authSlice = createSlice({
   name: "auth",
@@ -18,16 +22,18 @@ const authSlice = createSlice({
     [auth.pending]: (state) => {
       state.isLoading = true;
     },
-    [auth.fulfilled]: (state, { payload: { data } }) => {
-      const { accessToken, ...userInfo } = data;
+    [auth.fulfilled]: (state, { payload }) => {
+      const { accessToken, ...userInfo } = payload;
 
       state.isLoading = false;
       state.userInfo = userInfo;
       state.accessToken = accessToken;
+
+      localStorage.setItem("accessToken", accessToken);
     },
-    [auth.rejected]: (state, { payload: { data } }) => {
+    [auth.rejected]: (state, { error }) => {
       state.isLoading = false;
-      state.error = data;
+      state.error = error;
     },
   },
 });

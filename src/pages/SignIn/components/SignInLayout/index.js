@@ -1,12 +1,26 @@
-const SignInLayout = ({ handleSubmit }) => {
+const SignInLayout = ({ signInFrom, handleSubmit, handleFormChange }) => {
   return (
     <div>
       <h1>Sign In</h1>
 
-      <input type="email" placeholder="email..." />
-      <input type="password" placeholder="password..." />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          name="email"
+          value={signInFrom.email}
+          placeholder="email..."
+          onChange={handleFormChange}
+        />
+        <input
+          type="password"
+          name="password"
+          value={signInFrom.password}
+          placeholder="password..."
+          onChange={handleFormChange}
+        />
 
-      <button onClick={handleSubmit}>Login</button>
+        <button type="submit">Login</button>
+      </form>
     </div>
   );
 };

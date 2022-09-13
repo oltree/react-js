@@ -3,16 +3,36 @@ import { useDispatch } from "react-redux";
 
 import SignInLayout from "../components/SignInLayout";
 
+import { useForm } from "../../../hooks";
+
 import { auth } from "../reducers";
 
 const SignInContainer = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = useCallback(() => {
-    dispatch(auth());
-  }, [dispatch]);
+  const [signInFrom, handleFormChange, handleReset] = useForm({
+    email: "",
+    password: "",
+  });
 
-  return <SignInLayout handleSubmit={handleSubmit} />;
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      dispatch(auth(signInFrom));
+
+      handleReset();
+    },
+    [dispatch, signInFrom, handleReset]
+  );
+
+  return (
+    <SignInLayout
+      signInFrom={signInFrom}
+      handleSubmit={handleSubmit}
+      handleFormChange={handleFormChange}
+    />
+  );
 };
 
 export default SignInContainer;
