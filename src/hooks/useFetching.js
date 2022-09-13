@@ -11,20 +11,23 @@ export const useFetching = (
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleDataLoad = useCallback(async () => {
-    setLoading(true);
-    try {
-      //await delay(3000);
+  const handleDataLoad = useCallback(
+    async (data) => {
+      setLoading(true);
+      try {
+        //await delay(3000);
 
-      const response = await asyncCallback();
+        const response = await asyncCallback(data);
 
-      setData(response);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [asyncCallback]);
+        setData(response);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [asyncCallback]
+  );
 
   useEffect(() => {
     if (isLoadOnMount) {
