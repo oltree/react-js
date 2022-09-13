@@ -7,7 +7,7 @@ const initialState = {
   isLoading: false,
   error: null,
   userInfo: {},
-  accessToken: {},
+  accessToken: null,
 };
 
 export const auth = createAsyncThunk("auth/signIn", async (data) => {
