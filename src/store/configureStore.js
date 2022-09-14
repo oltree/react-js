@@ -19,6 +19,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: "root",
   storage,
+  blacklist: ["pokemonsDetails", "todosManager"], //not saved on page reload
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
