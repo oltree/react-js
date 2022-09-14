@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-const PokemonCard = ({ name, image, experience, handleClick }) => {
+const PokemonCard = ({ name, image, price, handleClick }) => {
   return (
     <Card sx={{ maxWidth: 200 }} onClick={handleClick}>
       <CardMedia component="img" height="200" image={image} alt={name} />
@@ -12,7 +12,7 @@ const PokemonCard = ({ name, image, experience, handleClick }) => {
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          My total experience - <b>{experience}</b>
+          My total experience - <b>{price}</b>
         </Typography>
       </CardContent>
     </Card>

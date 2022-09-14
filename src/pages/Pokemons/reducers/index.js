@@ -8,9 +8,11 @@ const initialState = {
   error: null,
 };
 
-export const loadPokemons = createAsyncThunk("pokemons/fetchAll", () =>
-  getPokemons()
-);
+export const loadPokemons = createAsyncThunk("pokemons/fetchAll", async () => {
+  const response = await getPokemons();
+
+  return response.data;
+});
 
 const pokemonsSlice = createSlice({
   name: "pokemons",
@@ -22,7 +24,7 @@ const pokemonsSlice = createSlice({
     });
     builder.addCase(loadPokemons.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.data = payload.data;
+      state.data = payload;
     });
     builder.addCase(loadPokemons.rejected, (state, { payload }) => {
       state.isLoading = false;

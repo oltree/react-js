@@ -12,13 +12,13 @@ const PokemonsLayout = ({ pokemons, isLoading, error, handleClick }) => {
         {isLoading ? (
           <Spinner />
         ) : (
-          pokemons?.map(({ id, name, image, experience }) => (
+          pokemons?.map(({ id, name, image, price }) => (
             <PokemonCard
               className={styles.pokemon}
               key={id}
               name={name}
               image={image}
-              experience={experience}
+              price={price}
               handleClick={() => handleClick(id)}
             />
           ))
