@@ -15,43 +15,45 @@ import TodoListContainer from "../pages/TodoList/container/TodoListContainer";
 import PokemonsContainer from "../pages/Pokemons/container/PokemonsContainer";
 import RenderPropContainer from "../pages/RenderProp/container/RenderPropContainer";
 import PokemonsDetailsContainer from "../pages/PokemonsDetails/container/PokemonsDetailsContainer";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoutes from "./PrivateRoutes";
 
 const Router = () => {
   return (
     <Routes>
       <Route path={ROUTE_NAMES.SIGN_UP} element={<SignUpContainer />} />
       <Route path={ROUTE_NAMES.SIGN_IN} element={<SignInContainer />} />
-      <Route path={ROUTE_NAMES.HOME} element={<Home />} />
-      <Route
-        path={ROUTE_NAMES.CLASS_COUNTER}
-        element={<ClassCounterContainer />}
-      />
-      <Route
-        path={ROUTE_NAMES.FUCNTIONAL_COUNTER}
-        element={
-          <PrivateRoute>
-            <FunctionalCounterContainer />
-          </PrivateRoute>
-        }
-      />
-      <Route path={ROUTE_NAMES.LISTS} element={<ListsContainer />} />
-      <Route
-        path={ROUTE_NAMES.COUNTERS_MANAGER}
-        element={<CountersManagerContainer />}
-      />
-      <Route path={ROUTE_NAMES.FORMS} element={<FormsContainer />} />
-      <Route
-        path={ROUTE_NAMES.REDUX_COUNTERS}
-        element={<ReduxCountersContainer />}
-      />
-      <Route path={ROUTE_NAMES.TODO_LIST} element={<TodoListContainer />} />
-      <Route path={ROUTE_NAMES.RENDER_PROP} element={<RenderPropContainer />} />
-      <Route path={ROUTE_NAMES.POKEMONS} element={<PokemonsContainer />} />
-      <Route
-        path={ROUTE_NAMES.POKEMON_DETAILS}
-        element={<PokemonsDetailsContainer />}
-      />
+
+      <Route element={<PrivateRoutes />}>
+        <Route path={ROUTE_NAMES.HOME} element={<Home />} />
+        <Route
+          path={ROUTE_NAMES.CLASS_COUNTER}
+          element={<ClassCounterContainer />}
+        />
+        <Route
+          path={ROUTE_NAMES.FUCNTIONAL_COUNTER}
+          element={<FunctionalCounterContainer />}
+        />
+        <Route path={ROUTE_NAMES.LISTS} element={<ListsContainer />} />
+        <Route
+          path={ROUTE_NAMES.COUNTERS_MANAGER}
+          element={<CountersManagerContainer />}
+        />
+        <Route path={ROUTE_NAMES.FORMS} element={<FormsContainer />} />
+        <Route
+          path={ROUTE_NAMES.REDUX_COUNTERS}
+          element={<ReduxCountersContainer />}
+        />
+        <Route path={ROUTE_NAMES.TODO_LIST} element={<TodoListContainer />} />
+        <Route
+          path={ROUTE_NAMES.RENDER_PROP}
+          element={<RenderPropContainer />}
+        />
+        <Route path={ROUTE_NAMES.POKEMONS} element={<PokemonsContainer />} />
+        <Route
+          path={ROUTE_NAMES.POKEMON_DETAILS}
+          element={<PokemonsDetailsContainer />}
+        />
+      </Route>
     </Routes>
   );
 };
