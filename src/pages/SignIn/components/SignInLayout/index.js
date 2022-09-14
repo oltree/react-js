@@ -1,3 +1,5 @@
+import styles from "./index.module.scss";
+
 const SignInLayout = ({
   signInFrom,
   handleSubmit,
@@ -5,10 +7,10 @@ const SignInLayout = ({
   handleExitAccount,
 }) => {
   return (
-    <div>
-      <h1>Sign In</h1>
+    <div className={styles.wrapper}>
+      <h1 className={styles.title}>Sign In</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="email"
           name="email"
@@ -24,10 +26,14 @@ const SignInLayout = ({
           onChange={handleFormChange}
         />
 
-        <button type="submit">Login</button>
+        <button type="submit" className={styles.buttonLogin}>
+          Login
+        </button>
       </form>
 
-      <button onClick={handleExitAccount}>exit</button>
+      <button onClick={handleExitAccount} className={styles.buttonExit}>
+        exit
+      </button>
     </div>
   );
 };

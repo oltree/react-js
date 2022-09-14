@@ -15,6 +15,7 @@ import TodoListContainer from "../pages/TodoList/container/TodoListContainer";
 import PokemonsContainer from "../pages/Pokemons/container/PokemonsContainer";
 import RenderPropContainer from "../pages/RenderProp/container/RenderPropContainer";
 import PokemonsDetailsContainer from "../pages/PokemonsDetails/container/PokemonsDetailsContainer";
+import PrivateRoute from "./PrivateRoute";
 
 const Router = () => {
   return (
@@ -28,7 +29,11 @@ const Router = () => {
       />
       <Route
         path={ROUTE_NAMES.FUCNTIONAL_COUNTER}
-        element={<FunctionalCounterContainer />}
+        element={
+          <PrivateRoute>
+            <FunctionalCounterContainer />
+          </PrivateRoute>
+        }
       />
       <Route path={ROUTE_NAMES.LISTS} element={<ListsContainer />} />
       <Route

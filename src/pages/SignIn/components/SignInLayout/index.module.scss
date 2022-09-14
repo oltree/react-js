@@ -1,0 +1,48 @@
+.wrapper {
+	width: 25%;
+	margin: 50px auto 0;
+	text-align: center;
+	border: 1px solid #000;
+	border-radius: 20px;
+}
+
+.title {
+	line-height: 100px;
+	font-size: 30px;
+}
+
+.form {
+	width: 70%;
+	margin: 0 auto 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	input {
+		padding: 5px;
+		border: 1px solid #000;
+		border-radius: 5px;
+	}
+}
+
+.buttonLogin {
+	padding: 5px;
+	border: 1px solid #000;
+	border-radius: 5px;
+	background: rgb(213, 211, 211);
+
+	&:hover {
+		background: rgb(193, 192, 192);
+	}
+}
+
+.buttonExit {
+	padding: 5px 20px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	color: white;
+	background: rgb(248, 27, 27);
+
+	&:hover {
+		background: rgb(208, 25, 25);
+	}
+}
