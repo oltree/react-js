@@ -4,11 +4,11 @@ import { getPokemons } from "../api";
 
 const initialState = {
   isLoading: false,
-  data: [], //pokemons
+  data: [],
   error: null,
 };
 
-export const loadPokemons = createAsyncThunk("pokemons/fetchAll", async () =>
+export const loadPokemons = createAsyncThunk("pokemons/fetchAll", () =>
   getPokemons()
 );
 
@@ -22,7 +22,7 @@ const pokemonsSlice = createSlice({
     });
     builder.addCase(loadPokemons.fulfilled, (state, { payload }) => {
       state.isLoading = false;
-      state.data = payload;
+      state.data = payload.data;
     });
     builder.addCase(loadPokemons.rejected, (state, { payload }) => {
       state.isLoading = false;
