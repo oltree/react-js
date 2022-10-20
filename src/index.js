@@ -4,9 +4,10 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 
-import { store } from "./store/configureStore";
 import Layouts from "./components/Layouts";
 import Router from "./router/Router";
+
+import { store } from "./store/configureStore";
 
 import "./index.scss";
 

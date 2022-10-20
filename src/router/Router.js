@@ -49,10 +49,7 @@ const Router = () => {
           element={<RenderPropContainer />}
         />
         <Route path={ROUTE_NAMES.POKEMONS} element={<PokemonsContainer />} />
-        <Route
-          path={ROUTE_NAMES.POKEMON_DETAILS}
-          element={<PokemonsDetailsContainer />}
-        />
+
       </Route>
     </Routes>
   );

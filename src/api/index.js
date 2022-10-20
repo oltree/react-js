@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { LOCAL_STORAGE_KEYS } from "../constants";
 
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "poke-store-api.herokuapp.com";
 
 export const apiConfig = {
   baseURL: BASE_URL,
