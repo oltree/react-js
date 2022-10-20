@@ -49,7 +49,6 @@ const Router = () => {
           element={<RenderPropContainer />}
         />
         <Route path={ROUTE_NAMES.POKEMONS} element={<PokemonsContainer />} />
-
       </Route>
     </Routes>
   );
