@@ -23,13 +23,8 @@ const Router = () => {
       <Route path={ROUTE_NAMES.SIGN_UP} element={<SignUpContainer />} />
       <Route path={ROUTE_NAMES.SIGN_IN} element={<SignInContainer />} />
 
-      <Route element={<PrivateRoutes />}>
-        <Route path={ROUTE_NAMES.HOME} element={<Home />} />
-        <Route
-          path={ROUTE_NAMES.CLASS_COUNTER}
-          element={<ClassCounterContainer />}
-        />
-        <Route
+			<Route path={ROUTE_NAMES.HOME} element={<Home />} />
+			<Route
           path={ROUTE_NAMES.FUCNTIONAL_COUNTER}
           element={<FunctionalCounterContainer />}
         />
@@ -49,6 +44,14 @@ const Router = () => {
           element={<RenderPropContainer />}
         />
         <Route path={ROUTE_NAMES.POKEMONS} element={<PokemonsContainer />} />
+
+      <Route element={<PrivateRoutes />}>
+        
+        <Route
+          path={ROUTE_NAMES.CLASS_COUNTER}
+          element={<ClassCounterContainer />}
+        />
+        
       </Route>
     </Routes>
   );
