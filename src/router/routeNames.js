@@ -11,5 +11,4 @@ export const ROUTE_NAMES = {
   TODO_LIST: "/todo-list",
   RENDER_PROP: "/render-prop",
   POKEMONS: "/pokemons",
-  POKEMON_DETAILS: "/pokemons/:id",
 };

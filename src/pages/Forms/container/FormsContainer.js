@@ -14,20 +14,13 @@ const FormsContainer = () => {
     event.preventDefault();
   };
 
-  //Показать/скрыть пароль
-
   const handleVisibilityChange = () => {
     setVisibility(!isPasswordVisible);
   };
 
-  //Other inputs
-  //1-checkbox
-
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
-
-  //2 -radiobuttons
 
   return (
     <FormsLayout

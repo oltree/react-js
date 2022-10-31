@@ -1,5 +1,6 @@
-import Counter from "../../../components/Counter";
 import { useCounter } from "../../../hooks";
+
+import Counter from "../../../components/Counter";
 
 const FunctionalCounterContainer = () => {
   const { count, handleIncrement, handleDecrement, handleReset } =
