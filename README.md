@@ -1,6 +1,6 @@
 # Project Description
 
-The "study-project-on-react" is an app built using React and various related technologies. This project aims to serve as a learning platform and demonstrate proficiency in modern web development. It features a range of technologies and libraries, including:
+The "react-js" is an app built using React and various related technologies. This project aims to serve as a learning platform and demonstrate proficiency in modern web development. It features a range of technologies and libraries, including:
 
 ## Technologies
 
